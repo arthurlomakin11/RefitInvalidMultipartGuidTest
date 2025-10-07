@@ -10,6 +10,9 @@ public class UploadController : ControllerBase
     {
         [FromForm(Name = "id")]
         public Guid Id { get; set; }
+        
+        [FromForm(Name = "startDate")]
+        public DateOnly StartDate { get; set; }
 
         [FromForm(Name = "file")]
         public IFormFile File { get; set; } = null!;
@@ -23,6 +26,7 @@ public class UploadController : ControllerBase
             Message = "File uploaded successfully",
             form.Id,
             form.File.FileName,
+            form.StartDate,
             Size = form.File.Length
         });
     }
